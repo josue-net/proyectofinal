@@ -1,22 +1,22 @@
 <?php
  $conexion = new mysqli('localhost', 'root','12345678', 'diario',3360);
  if ($conexion->connect_error) die ("Fatal error");
-ECHO "<center><h1>DIARIO PERSONAL</h1>";
+ECHO "<center><h1>Iniciar Sesión</h1>";
 echo <<<_END
 <html>
     <head>
-        <title>DIARIO PERSONA</title>
+        <title>Bienvenido</title>
         <link rel="stylesheet" href="css/login.css">
-    <link rel="stylesheet" href="css/cabecera.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css">
+        <link rel="stylesheet" href="css/cabecera.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css">
     </head>
     <form method="post" action="contenido.php">
     <tr>¿Cual es tu Usuario?<p>
         <input type="text" name="name" placeholder="usuario"><p>
         <input type="password" placeholder="contraseña"><p>
         <input type="submit"value="Ingresar"><p>
-        <h2> Aun no tienes una cuenta?</h2>
-        <a href="registro.php">Registrate</a>
+        <h4>  no tienes una cuenta?</h4>
+        <a href="registro.php">REGISTRATE</a>
     </form>
     <div>
     
