@@ -111,7 +111,7 @@ if(isset($_POST['signupSubmit'])){
 				$mailContent = 'Estimad@ '.$userDetails['first_name'].', 
 				<br/><br/>Recientemente se envió una solicitud para restablecer una contraseña para su cuenta. Si esto fue un error, simplemente ignore este correo electrónico y no pasará nada.
 				<br/>Para restablecer su contraseña, visite el siguiente enlace: <a href="'.$resetPassLink.'">'.$resetPassLink.'</a>
-                <br/>https://www.josuecz/';                ;
+                <br/>https://www.facebook.com/profile.php?id=100008961453308';                ;
                 
 				//set content-type header for sending HTML email
 				$headers = "MIME-Version: 1.0" . "\r\n";
