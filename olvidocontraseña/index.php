@@ -11,7 +11,7 @@ if(!empty($sessData['status']['msg'])){
 <html>
 <head>
     <title>Bienvenido</title>
-	<link rel="stylesheet" href="css/logi.css">
+	<link rel="stylesheet" href="css/log.css">
     <link rel="stylesheet" href="css/cabecera.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css">
 </head>
@@ -28,12 +28,9 @@ if(!empty($sessData['status']['msg'])){
 				$conditions['return_type'] = 'single';
 				$userData = $user->getRows($conditions);
 		?>
-        <h2>Bienvenid@ <?php echo $userData['first_name']; ?>!</h2>
+        <h2 align="right">Bienvenid@ <?php echo $userData['first_name']; ?>!</h2>
         <a href="cuentausuario.php?logoutSubmit=1" class="logout">Cerrar Sesión</a>
-		<div class="regisFrm">
-			<p><b>Nombre: </b><?php echo $userData['first_name'].' '.$userData['last_name']; ?></p>
-            <p><b>Correo: </b><?php echo $userData['email']; ?></p>
-            <p><b>Teléfono: </b><?php echo $userData['phone']; ?></p>
+		<div id="josue" class="regisFrm">
 		</div>
         <?php }else{ ?>
 		<h2 align="center">Ingresa en tu Cuenta</h2>
