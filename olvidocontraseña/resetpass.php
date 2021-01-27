@@ -10,13 +10,13 @@ if(!empty($sessData['status']['msg'])){
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Registro de Usuario, Login y Cambio de Contraseña en PHP y MySQL</title>
-	<link rel="stylesheet" href="css/logi.css">
+    <title>Bienvenido</title>
+	<link rel="stylesheet" href="css/log.css">
     <link rel="stylesheet" href="css/cabecera.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css">
 </head>
 <body>
-    <h1>Registro de Usuario, Login y Cambio de Contraseña en PHP y MySQL</h1>
+    <h1>Bienvenido</h1>
 	<div class="container">
 		<h2>Resetea la Contraseña de tu Cuenta</h2>
         <?php echo !empty($statusMsg)?'<p class="'.$statusMsgType.'">'.$statusMsg.'</p>':''; ?>

@@ -11,7 +11,7 @@ if(!empty($sessData['status']['msg'])){
 <html>
 <head>
     <title>Bienvenido</title>
-	<link rel="stylesheet" href="css/logi.css">
+	<link rel="stylesheet" href="css/log.css">
     <link rel="stylesheet" href="css/cabecera.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css">
 </head>

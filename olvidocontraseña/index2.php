@@ -10,9 +10,7 @@ if(!empty($sessData['status']['msg'])){
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Bienvenido</title>
-   <meta name="viewport" content="width=device-width, user-scalable=no,
-    initial-scale=1, maximun-scale=1, minimum-scale=1">
+    <title>Menu</title>
     <link rel="stylesheet" href="css/estilo.css">
 </head>  
 <body>
@@ -26,24 +24,46 @@ if(!empty($sessData['status']['msg'])){
 				);
 				$conditions['return_type'] = 'single';
 				$userData = $user->getRows($conditions);
-		?>
+        ?>
         <h4>usuario: <?php echo $userData['first_name']; ?></h2>
-        <a href="cuentausuario.php?logoutSubmit=1" class="menu">SALIR</a>
+        <a href="cuentausuario.php?logoutSubmit=1"><img class="close" src="IMG/salir.png" alt="Salir del sistema" title="Salir"></a>
         <?php } ?>
 	</div>
     <header>
-    <input type="checkbox" id="btn-menu">
-    <label for="btn-menu"><img src="menu.png" alt="">
-    </label>
-                <nav class="menu">
-                <ul>
-                <li><a href="">Inicio</a></li>
-                <li><a href="">Servicios</a></li>
-                <li><a href="">Productos</a></li>
-                <li><a href="">Clientes</a></li>
-                <li><a href="">Contacto</a></li>
-                </ul>
-                </nav>
+    <div class="menu-bar">
+        </div>
+        <nav>
+            <ul>
+                <li><a><span class="icon-home"></span>INICIO</a></li>
+                <li class="submenu">
+                    <a href="#"><span class="icon-library"></span>Usuarios<span class="despegable icon-circle-down"></span></a>
+                    <ul class="hijos">
+                        <li><a href="#">Nuevo Usuario<span class="icon"></span></a></li>
+                        <li><a href="#">Lista de Usuarios<span class="icon"></span></a></li>
+                    </ul>
+                </li>
+                <li class="submenu">
+                    <a href="#"><span class="icon-library"></span>Clientes<span class="despegable icon-circle-down"></span></a>
+                    <ul class="hijos">
+                        <li><a href="#">Nuevo Cliente<span class="icon"></span></a></li>
+                        <li><a href="#">Lista de Cliente<span class="icon"></span></a></li>
+                        </ul>
+                <li class="submenu">
+                    <a href="#"><span class="icon-library"></span>Proveedores<span class="despegable icon-circle-down"></span></a>
+                    <ul class="hijos">
+                        <li><a href="#">Nuevo Proveedor<span class="icon"></span></a></li>
+                        <li><a href="#">Lista de Proveedores<span class="icon"></span></a></li>
+                    </ul>
+               <li class="submenu">
+                    <a href="#"><span class="icon-library"></span>Productos<span class="despegable icon-circle-down"></span></a>
+                    <ul class="hijos">
+                        <li><a href="#">Nuevo Producto<span class="icon"></span></a></li>
+                        <li><a href="#">Lista de Productos<span class="icon"></span></a></li>
+                    </ul>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
     </header>
 </body>
 </html>
