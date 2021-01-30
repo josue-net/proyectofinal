@@ -34,12 +34,12 @@ if(!empty($sessData['status']['msg'])){
         </div>
         <nav>
             <ul>
-                <li><a><span class="icon-home"></span>INICIO</a></li>
+                <li><a href="index2.php"><span class="icon-home"></span>INICIO</a></li>
                 <li class="submenu">
                     <a href="#"><span class="icon-library"></span>Usuarios<span class="despegable icon-circle-down"></span></a>
                     <ul class="hijos">
-                        <li><a href="#">Nuevo Usuario<span class="icon"></span></a></li>
-                        <li><a href="#">Lista de Usuarios<span class="icon"></span></a></li>
+                        <li><a href="registro_usuario.php">Nuevo Usuario<span class="icon"></span></a></li>
+                        <li><a href="lista_usuario.php">Lista de Usuarios<span class="icon"></span></a></li>
                     </ul>
                 </li>
                 <li class="submenu">

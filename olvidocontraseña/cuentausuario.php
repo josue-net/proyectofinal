@@ -45,7 +45,7 @@ if(isset($_POST['signupSubmit'])){
     }
 
     $_SESSION['sessData'] = $sessData;
-    $redirectURL = ($sessData['status']['type'] == 'success')?'index.php':'registration.php';
+    $redirectURL = ($sessData['status']['type'] == 'success')?'index2.php':'registration.php';
 
     header("Location:".$redirectURL);
 }elseif(isset($_POST['loginSubmit'])){
