@@ -12,6 +12,7 @@ if(!empty($sessData['status']['msg'])){
 <head>
     <title>Menu</title>
     <link rel="stylesheet" href="css/estilo.css">
+    <script type="text/javascript" src="js/main.js"></script>
 </head>  
 <body>
 <div class="caja" id="jo">
@@ -45,8 +46,8 @@ if(!empty($sessData['status']['msg'])){
                 <li class="submenu">
                     <a href="#"><span class="icon-library"></span>Clientes<span class="despegable icon-circle-down"></span></a>
                     <ul class="hijos">
-                        <li><a href="#">Nuevo Cliente<span class="icon"></span></a></li>
-                        <li><a href="#">Lista de Cliente<span class="icon"></span></a></li>
+                        <li><a href="registro_cliente.php">Nuevo Cliente<span class="icon"></span></a></li>
+                        <li><a href="lista_cliente.php">Lista de Cliente<span class="icon"></span></a></li>
                         </ul>
                 <li class="submenu">
                     <a href="#"><span class="icon-library"></span>Proveedores<span class="despegable icon-circle-down"></span></a>

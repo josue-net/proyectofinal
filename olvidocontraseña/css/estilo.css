@@ -1,7 +1,7 @@
 body {
 margin: 0;
 font-family: sans-serif;
-background-image:url(../IMG/jo.jpg);
+background-image:url(IMG/fondo.jpg);
 width: 100%;
 height:100%vh;
 background-size: cover;
@@ -112,3 +112,6 @@ a{
 	font-family: arial;
 	letter-spacing: 1px;
 }
+#btn-menu {
+  display: none;
+  }
