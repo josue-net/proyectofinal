@@ -8,33 +8,34 @@
 <head>
 	<meta charset="UTF-8">
 	<?php include "scripts.php"; ?>
-	<title>Lista de clientes</title>
+	<title>Lista de Productos</title>
 </head>
 <body>
 	<?php include "index2.php"; ?>
 	<section id="container">
 		
-		<h1>Lista de cliente</h1>
-		<a href="registro_cliente.php" class="btn_new">Agregar nuevo cliente</a>
+		<h1>Lista de Productos</h1>
+		<a href="registro_producto.php" class="btn_new">Agregar nuevo Producto</a>
 		
-		<form action="buscar_cliente.php" method="get" class="form_search">
+		<form action="buscar_producto.php" method="get" class="form_search">
 			<input type="text" name="busqueda" id="busqueda" placeholder="Buscar">
 			<input type="submit" value="Buscar" class="btn_search">
 		</form>
 
 		<table>
 			<tr>
-				<th>ID</th>
-				<th>DNI</th>
-				<th>Nombre</th>
-				<th>Telefono</th>
-				<th>Direccion</th>
+				<th>Codigo</th>
+				<th>Descripcion</th>
+				<th>Precio</th>
+				<th>Cantidad</th>
+				<th>Proveedor</th>
+                <th>Foto</th>
 				<th>Acciones</th>
 			</tr>
 		<?php 
 	
 			//Paginador
-			$sql_registe = mysqli_query($conection,"SELECT COUNT(*) as total_registro FROM cliente");
+			$sql_registe = mysqli_query($conection,"SELECT COUNT(*) as total_registro FROM productos");
 			$result_register = mysqli_fetch_array($sql_registe);
 			$total_registro = $result_register['total_registro'];
 
@@ -50,7 +51,7 @@
 			$desde = ($pagina-1) * $por_pagina;
 			$total_paginas = ceil($total_registro / $por_pagina);
 
-			$query = mysqli_query($conection,"SELECT * FROM cliente  ORDER BY idcliente ASC LIMIT $desde,$por_pagina 
+			$query = mysqli_query($conection,"SELECT * FROM productos  ORDER BY codproducto DESC LIMIT $desde,$por_pagina 
 				");
 
 			mysqli_close($conection);
@@ -59,17 +60,23 @@
 			if($result > 0){
 
 				while ($data = mysqli_fetch_array($query)) {
+                    if($data["foto"] != 'img_producto.png'){
+                        $foto ='IMG/uploads/'.$data["foto"];
+                    }else{
+                        $foto='IMG/'.$data["foto"];
+                    }
 					
 			?>
 				<tr>
-					<td><?php echo $data["idcliente"]; ?></td>
-					<td><?php echo $data["nit"]; ?></td>
-					<td><?php echo $data["nombre"]; ?></td>
-					<td><?php echo $data["telefono"]; ?></td>
-					<td><?php echo $data["direccion"]; ?></td>
+					<td><?php echo $data["codproducto"]; ?></td>
+                    <td><?php echo $data["descripcion"]; ?></td>
+                    <td><?php echo $data["precio"]; ?></td>
+                    <td><?php echo $data["cantidad"]; ?></td>
+					<td><?php echo $data["proveedor"]; ?></td>
+                    <td class="img_producto"><img src="<?php echo $foto; ?>" alt="<?php echo $data["descripcion"]; ?>"></td>
 					<td>
-						<a class="link_edit" href="editar_cliente.php?id=<?php echo $data["idcliente"]; ?>">Editar</a>
-						<a class="link_delete" href="eliminar_confirmar_cliente.php?id=<?php echo $data["idcliente"]; ?>">Eliminar</a>
+						<a class="link_edit" href="editar_productos.php?id=<?php echo $data["codproducto"]; ?>">Editar</a>
+						<a class="link_delete" href="eliminar_confirmar_productos.php?id=<?php echo $data["codproducto"]; ?>">Eliminar</a>
 					</td>
 				</tr>
 			

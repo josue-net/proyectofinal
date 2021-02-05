@@ -59,8 +59,8 @@
 			<div class="alert"><?php echo isset($alert) ? $alert : ''; ?></div>
 
 			<form action="" method="post">
-				<label for="nit">NIT</label>
-				<input type="number" name="nit" id="nit" placeholder="Numero de NIT">
+				<label for="nit">DNI</label>
+				<input type="number" name="nit" id="nit" placeholder="Numero de DNI">
 				<label for="nombre">Nombre</label>
 				<input type="text" name="nombre" id="nombre" placeholder="Nombre Completo">
 				<label for="telefono">telefono</label>

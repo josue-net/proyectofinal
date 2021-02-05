@@ -52,14 +52,14 @@ if(!empty($sessData['status']['msg'])){
                 <li class="submenu">
                     <a href="#"><span class="icon-library"></span>Proveedores<span class="despegable icon-circle-down"></span></a>
                     <ul class="hijos">
-                        <li><a href="#">Nuevo Proveedor<span class="icon"></span></a></li>
-                        <li><a href="#">Lista de Proveedores<span class="icon"></span></a></li>
+                        <li><a href="registro_proveedores.php">Nuevo Proveedor<span class="icon"></span></a></li>
+                        <li><a href="lista_proveedor.php">Lista de Proveedores<span class="icon"></span></a></li>
                     </ul>
                <li class="submenu">
                     <a href="#"><span class="icon-library"></span>Productos<span class="despegable icon-circle-down"></span></a>
                     <ul class="hijos">
-                        <li><a href="#">Nuevo Producto<span class="icon"></span></a></li>
-                        <li><a href="#">Lista de Productos<span class="icon"></span></a></li>
+                        <li><a href="registro_producto.php">Nuevo Producto<span class="icon"></span></a></li>
+                        <li><a href="lista_productos.php">Lista de Productos<span class="icon"></span></a></li>
                     </ul>
                     </ul>
                 </li>

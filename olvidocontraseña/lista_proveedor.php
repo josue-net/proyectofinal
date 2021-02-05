@@ -14,10 +14,10 @@
 	<?php include "index2.php"; ?>
 	<section id="container">
 		
-		<h1>Lista de cliente</h1>
-		<a href="registro_cliente.php" class="btn_new">Agregar nuevo cliente</a>
+		<h1>Lista de proveedores</h1>
+		<a href="registro_proveedores.php" class="btn_new">Agregar Proveedor</a>
 		
-		<form action="buscar_cliente.php" method="get" class="form_search">
+		<form action="buscar_proveedor.php" method="get" class="form_search">
 			<input type="text" name="busqueda" id="busqueda" placeholder="Buscar">
 			<input type="submit" value="Buscar" class="btn_search">
 		</form>
@@ -25,8 +25,8 @@
 		<table>
 			<tr>
 				<th>ID</th>
-				<th>DNI</th>
-				<th>Nombre</th>
+				<th>Proveedor</th>
+				<th>Contacto</th>
 				<th>Telefono</th>
 				<th>Direccion</th>
 				<th>Acciones</th>
@@ -34,7 +34,7 @@
 		<?php 
 	
 			//Paginador
-			$sql_registe = mysqli_query($conection,"SELECT COUNT(*) as total_registro FROM cliente");
+			$sql_registe = mysqli_query($conection,"SELECT COUNT(*) as total_registro FROM proveedor");
 			$result_register = mysqli_fetch_array($sql_registe);
 			$total_registro = $result_register['total_registro'];
 
@@ -50,7 +50,7 @@
 			$desde = ($pagina-1) * $por_pagina;
 			$total_paginas = ceil($total_registro / $por_pagina);
 
-			$query = mysqli_query($conection,"SELECT * FROM cliente  ORDER BY idcliente ASC LIMIT $desde,$por_pagina 
+			$query = mysqli_query($conection,"SELECT * FROM proveedor  ORDER BY codproveedor ASC LIMIT $desde,$por_pagina 
 				");
 
 			mysqli_close($conection);
@@ -62,14 +62,14 @@
 					
 			?>
 				<tr>
-					<td><?php echo $data["idcliente"]; ?></td>
-					<td><?php echo $data["nit"]; ?></td>
-					<td><?php echo $data["nombre"]; ?></td>
+					<td><?php echo $data["codproveedor"]; ?></td>
+					<td><?php echo $data["proveedor"]; ?></td>
+					<td><?php echo $data["contacto"]; ?></td>
 					<td><?php echo $data["telefono"]; ?></td>
 					<td><?php echo $data["direccion"]; ?></td>
 					<td>
-						<a class="link_edit" href="editar_cliente.php?id=<?php echo $data["idcliente"]; ?>">Editar</a>
-						<a class="link_delete" href="eliminar_confirmar_cliente.php?id=<?php echo $data["idcliente"]; ?>">Eliminar</a>
+						<a class="link_edit" href="editar_proveedor.php?id=<?php echo $data["codproveedor"]; ?>">Editar</a>
+						<a class="link_delete" href="eliminar_confirmar_proveedor.php?id=<?php echo $data["codproveedor"]; ?>">Eliminar</a>
 					</td>
 				</tr>
 			

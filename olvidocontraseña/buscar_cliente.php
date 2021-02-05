@@ -1,5 +1,7 @@
 <?php 
+
 	include "conexion.php";	
+
  ?>
 
 
@@ -13,12 +15,23 @@
 <body>
 	<?php include "index2.php"; ?>
 	<section id="container">
+		<?php 
+
+			$busqueda = strtolower($_REQUEST['busqueda']);
+			if(empty($busqueda))
+			{
+				header("location: lista_cliente.php");
+				mysqli_close($conection);
+			}
+
+
+		 ?>
 		
-		<h1>Lista de cliente</h1>
-		<a href="registro_cliente.php" class="btn_new">Agregar nuevo cliente</a>
+		<h1>Lista de clientes</h1>
+		<a href="registro_cliente.php" class="btn_new">Agregar Cliente</a>
 		
 		<form action="buscar_cliente.php" method="get" class="form_search">
-			<input type="text" name="busqueda" id="busqueda" placeholder="Buscar">
+			<input type="text" name="busqueda" id="busqueda" placeholder="Buscar" value="<?php echo $busqueda; ?>">
 			<input type="submit" value="Buscar" class="btn_search">
 		</form>
 
@@ -32,9 +45,28 @@
 				<th>Acciones</th>
 			</tr>
 		<?php 
-	
 			//Paginador
-			$sql_registe = mysqli_query($conection,"SELECT COUNT(*) as total_registro FROM cliente");
+			$rol = '';
+			if($busqueda == 'administrador')
+			{
+				$rol = " OR rol LIKE '%1%' ";
+
+			}else if($busqueda == 'supervisor'){
+
+				$rol = " OR rol LIKE '%2%' ";
+
+			}else if($busqueda == 'vendedor'){
+
+				$rol = " OR rol LIKE '%3%' ";
+			}
+
+
+			$sql_registe = mysqli_query($conection,"SELECT COUNT(*) as total_registro FROM cliente
+																WHERE ( idcliente LIKE '%$busqueda%' OR 
+																		nit LIKE '%$busqueda%' OR 
+																		nombre LIKE '%$busqueda%' OR 
+																		telefono LIKE '%$busqueda%')");
+
 			$result_register = mysqli_fetch_array($sql_registe);
 			$total_registro = $result_register['total_registro'];
 
@@ -50,11 +82,13 @@
 			$desde = ($pagina-1) * $por_pagina;
 			$total_paginas = ceil($total_registro / $por_pagina);
 
-			$query = mysqli_query($conection,"SELECT * FROM cliente  ORDER BY idcliente ASC LIMIT $desde,$por_pagina 
-				");
-
+			$query = mysqli_query($conection,"SELECT * FROM cliente	WHERE 
+										( idcliente LIKE '%$busqueda%' OR 
+											nit LIKE '%$busqueda%' OR 
+											nombre LIKE '%$busqueda%' OR 
+											telefono LIKE '%$busqueda%' OR 
+											direccion  LIKE  '%$busqueda%' )");
 			mysqli_close($conection);
-
 			$result = mysqli_num_rows($query);
 			if($result > 0){
 
@@ -66,10 +100,15 @@
 					<td><?php echo $data["nit"]; ?></td>
 					<td><?php echo $data["nombre"]; ?></td>
 					<td><?php echo $data["telefono"]; ?></td>
-					<td><?php echo $data["direccion"]; ?></td>
+					<td><?php echo $data['direccion'] ?></td>
 					<td>
 						<a class="link_edit" href="editar_cliente.php?id=<?php echo $data["idcliente"]; ?>">Editar</a>
+
+					<?php if($data["idcliente"] != 1){ ?>
+						|
 						<a class="link_delete" href="eliminar_confirmar_cliente.php?id=<?php echo $data["idcliente"]; ?>">Eliminar</a>
+					<?php } ?>
+						
 					</td>
 				</tr>
 			
@@ -81,14 +120,19 @@
 
 
 		</table>
+<?php 
+	
+	if($total_registro != 0)
+	{
+ ?>
 		<div class="paginador">
 			<ul>
 			<?php 
 				if($pagina != 1)
 				{
 			 ?>
-				<li><a href="?pagina=<?php echo 1; ?>">|<</a></li>
-				<li><a href="?pagina=<?php echo $pagina-1; ?>"><<</a></li>
+				<li><a href="?pagina=<?php echo 1; ?>&busqueda=<?php echo $busqueda; ?>">|<</a></li>
+				<li><a href="?pagina=<?php echo $pagina-1; ?>&busqueda=<?php echo $busqueda; ?>"><<</a></li>
 			<?php 
 				}
 				for ($i=1; $i <= $total_paginas; $i++) { 
@@ -97,18 +141,19 @@
 					{
 						echo '<li class="pageSelected">'.$i.'</li>';
 					}else{
-						echo '<li><a href="?pagina='.$i.'">'.$i.'</a></li>';
+						echo '<li><a href="?pagina='.$i.'&busqueda='.$busqueda.'">'.$i.'</a></li>';
 					}
 				}
 
 				if($pagina != $total_paginas)
 				{
 			 ?>
-				<li><a href="?pagina=<?php echo $pagina + 1; ?>">>></a></li>
-				<li><a href="?pagina=<?php echo $total_paginas; ?> ">>|</a></li>
+				<li><a href="?pagina=<?php echo $pagina + 1; ?>&busqueda=<?php echo $busqueda; ?>">>></a></li>
+				<li><a href="?pagina=<?php echo $total_paginas; ?>&busqueda=<?php echo $busqueda; ?> ">>|</a></li>
 			<?php } ?>
 			</ul>
 		</div>
+<?php } ?>
 
 
 	</section>
