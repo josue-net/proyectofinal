@@ -69,7 +69,7 @@
                 <label for="proveedor">Proveedor</label>
                 <?php
                 
-                $query_proveedor=mysqli_query($conection,"SELECT codproveedor, proveedor from proveedor");
+                $query_proveedor=mysqli_query($conection,"SELECT codproveedor, proveedor from proveedores");
                 $result_proveedor=mysqli_num_rows($query_proveedor);
                 mysqli_close($conection);
                 

@@ -3,12 +3,12 @@
 
 	if(!empty($_POST))
 	{
-		$codproveedor = $_POST['codproveedor'];
+		$codproveedor = $_POST['codproducto'];
 
-		$query_delete = mysqli_query($conection,"DELETE FROM proveedores WHERE codproveedor =$codproveedor ");
+		$query_delete = mysqli_query($conection,"DELETE FROM productos WHERE codproducto =$codproducto ");
 		mysqli_close($conection);
 		if($query_delete){
-			header("location: lista_proveedor.php");
+			header("location: lista_productos.php");
 		}else{
 			echo "Error al eliminar";
 		}
@@ -18,26 +18,27 @@
 	//Mostrar Datos
 	if(empty($_REQUEST['id']))
 	{
-		header('Location: lista_proveedor.php');
+		header('Location: lista_productos.php');
 		mysqli_close($conection);
 	}
-	$codproveedor = $_REQUEST['id'];
+	$codproducto = $_REQUEST['id'];
 
-	$sql= mysqli_query($conection,"SELECT * FROM proveedores
-									WHERE codproveedor= $codproveedor ");
+	$sql= mysqli_query($conection,"SELECT * FROM productos
+									WHERE codproducto= $codproducto ");
 	mysqli_close($conection);
 	$result_sql = mysqli_num_rows($sql);
 
 	if($result_sql == 0){
-		header('Location: lista_proveedor.php');
+		header('Location: lista_productos.php');
 	}else{
 		while ($data = mysqli_fetch_array($sql)) {
 			# code...
-			$codproveedor = $data['codproveedor'];
+			$codproducto = $data['codproducto'];
 			$proveedor  = $data['proveedor'];
-			$contacto  = $data['contacto'];
-			$telefono = $data['telefono'];
-			$direccion   = $data['direccion'];
+			$producto  = $data['descripcion'];
+			$precio = $data['precio'];
+			$cantidad   = $data['cantidad'];
+            $foto  = $data['foto'];
 
 
 		}
@@ -50,7 +51,7 @@
 <head>
 	<meta charset="UTF-8">
 	<?php include "scripts.php"; ?>
-	<title>Eliminar Usuario</title>
+	<title>Eliminar Producto</title>
 </head>
 <body>
 	<?php include "index2.php"; ?>
@@ -58,11 +59,11 @@
 		<div class="data_delete">
 			<h2>¿Está seguro de eliminar el siguiente registro?</h2>
 			<p>proveedor: <span><?php echo $proveedor; ?></span></p>
-			<p>contacto: <span><?php echo $contacto; ?></span></p>
+			<p>descripcion: <span><?php echo $producto; ?></span></p>
 
 			<form method="post" action="">
-				<input type="hidden" name="codproveedor" value="<?php echo $codproveedor; ?>">
-				<a href="lista_proveedor.php" class="btn_cancel">Cancelar</a>
+				<input type="hidden" name="codproducto" value="<?php echo $codproducto; ?>">
+				<a href="lista_productos.php" class="btn_cancel">Cancelar</a>
 				<input type="submit" value="Aceptar" class="btn_ok">
 			</form>
 		</div>

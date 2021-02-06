@@ -61,7 +61,7 @@
 			}
 
 
-			$sql_registe = mysqli_query($conection,"SELECT COUNT(*) as total_registro FROM proveedor
+			$sql_registe = mysqli_query($conection,"SELECT COUNT(*) as total_registro FROM proveedores
 																WHERE ( codproveedor LIKE '%$busqueda%' OR 
 																		proveedor LIKE '%$busqueda%' OR 
 																		contacto LIKE '%$busqueda%' OR 
@@ -82,7 +82,7 @@
 			$desde = ($pagina-1) * $por_pagina;
 			$total_paginas = ceil($total_registro / $por_pagina);
 
-			$query = mysqli_query($conection,"SELECT * FROM proveedor	WHERE 
+			$query = mysqli_query($conection,"SELECT * FROM proveedores	WHERE 
 										( codproveedor LIKE '%$busqueda%' OR 
 											proveedor LIKE '%$busqueda%' OR 
 											contacto LIKE '%$busqueda%' OR 

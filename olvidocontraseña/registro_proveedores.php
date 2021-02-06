@@ -18,13 +18,13 @@
 			$result =0;
 			if(is_numeric($proveedor))
 			{
-				$query = mysqli_query($conection,"SELECT * FROM proveedor WHERE proveedor = '$proveedor' ");
+				$query = mysqli_query($conection,"SELECT * FROM proveedores WHERE proveedor = '$proveedor' ");
 			    $result=mysqli_fetch_array($query);
 			}
 			if($result>0){
 				$alert='<p class="msg_save">El proveedor ya existe.</p>';
 			}else{
-				$query_insert=mysqli_query($conection,"insert into proveedor(proveedor,contacto,telefono,direccion)
+				$query_insert=mysqli_query($conection,"insert into proveedores(proveedor,contacto,telefono,direccion)
 														values('$proveedor','$contacto','$telefono','$direccion')");
 				
 				if($query_insert){

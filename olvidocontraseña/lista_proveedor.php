@@ -34,7 +34,7 @@
 		<?php 
 	
 			//Paginador
-			$sql_registe = mysqli_query($conection,"SELECT COUNT(*) as total_registro FROM proveedor");
+			$sql_registe = mysqli_query($conection,"SELECT COUNT(*) as total_registro FROM proveedores");
 			$result_register = mysqli_fetch_array($sql_registe);
 			$total_registro = $result_register['total_registro'];
 
@@ -50,7 +50,7 @@
 			$desde = ($pagina-1) * $por_pagina;
 			$total_paginas = ceil($total_registro / $por_pagina);
 
-			$query = mysqli_query($conection,"SELECT * FROM proveedor  ORDER BY codproveedor ASC LIMIT $desde,$por_pagina 
+			$query = mysqli_query($conection,"SELECT * FROM proveedores  ORDER BY codproveedor ASC LIMIT $desde,$por_pagina 
 				");
 
 			mysqli_close($conection);

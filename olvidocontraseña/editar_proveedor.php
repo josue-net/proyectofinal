@@ -17,7 +17,7 @@
 
 
 
-			$query = mysqli_query($conection,"SELECT * FROM proveedor
+			$query = mysqli_query($conection,"SELECT * FROM proveedores
 													   WHERE (proveedor = '$proveedor' AND codproveedor != $codproveedor)");
 
 			$result = mysqli_fetch_array($query);
@@ -29,11 +29,11 @@
 				if(empty($_POST['contacto']))
 				{
 
-					$sql_update = mysqli_query($conection,"UPDATE proveedor
+					$sql_update = mysqli_query($conection,"UPDATE proveedores
 															SET proveedor = '$proveedor', contacto='$contacto',telefono='$telefono',direccion='$direccion'
 															WHERE codproveedor= $codproveedor ");
 				}else{
-					$sql_update = mysqli_query($conection,"UPDATE proveedor
+					$sql_update = mysqli_query($conection,"UPDATE proveedores
 															SET proveedor = '$proveedor', contacto='$contacto',telefono='$telefono',direccion='$direccion'
 															WHERE codproveedor= $codproveedor ");
 
@@ -60,7 +60,7 @@
 	}
 	$codproveedor = $_REQUEST['id'];
 
-	$sql= mysqli_query($conection,"SELECT * FROM proveedor
+	$sql= mysqli_query($conection,"SELECT * FROM proveedores
 									WHERE codproveedor= $codproveedor ");
 	mysqli_close($conection);
 	$result_sql = mysqli_num_rows($sql);

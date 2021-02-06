@@ -28,7 +28,26 @@
 				<th>Descripcion</th>
 				<th>Precio</th>
 				<th>Cantidad</th>
-				<th>Proveedor</th>
+				<th>
+				<?php
+                
+                $query_proveedor=mysqli_query($conection,"SELECT codproveedor, proveedor from proveedores");
+                $result_proveedor=mysqli_num_rows($query_proveedor);
+                
+                ?>
+                <select name="proveedor" id="search_proveedor">
+                <?php
+                if($result_proveedor>0){
+                    while($proveedor=mysqli_fetch_array($query_proveedor)){
+                ?>
+                  <option value="<?php echo $proveedor['codproveedor'];?>"><?php echo $proveedor['proveedor'];?></option>
+                <?php
+
+                    }
+                }
+                ?>
+                </select>
+				</th>
                 <th>Foto</th>
 				<th>Acciones</th>
 			</tr>
@@ -51,8 +70,8 @@
 			$desde = ($pagina-1) * $por_pagina;
 			$total_paginas = ceil($total_registro / $por_pagina);
 
-			$query = mysqli_query($conection,"SELECT * FROM productos  ORDER BY codproducto DESC LIMIT $desde,$por_pagina 
-				");
+			$query = mysqli_query($conection,"SELECT p.codproducto,p.descripcion,p.precio,p.cantidad,pr.proveedor,p.foto FROM productos p INNER JOIN proveedores pr
+			ON p.proveedor=pr.codproveedor  ORDER BY codproducto DESC LIMIT $desde,$por_pagina ");
 
 			mysqli_close($conection);
 
@@ -75,8 +94,8 @@
 					<td><?php echo $data["proveedor"]; ?></td>
                     <td class="img_producto"><img src="<?php echo $foto; ?>" alt="<?php echo $data["descripcion"]; ?>"></td>
 					<td>
-						<a class="link_edit" href="editar_productos.php?id=<?php echo $data["codproducto"]; ?>">Editar</a>
-						<a class="link_delete" href="eliminar_confirmar_productos.php?id=<?php echo $data["codproducto"]; ?>">Eliminar</a>
+						<a class="link_edit" href="editar_producto.php?id=<?php echo $data["codproducto"]; ?>">Editar</a>
+						<a class="link_delete" href="eliminar_producto.php?id=<?php echo $data["codproducto"]; ?>">Eliminar</a>
 					</td>
 				</tr>
 			
